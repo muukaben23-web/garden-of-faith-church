@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden of Faith Israel Pentecostal Church of Zambia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-cross me-2"></i>
+                <span class="brand-text">Garden of Faith</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#youth">Youth Ministry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">All Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="floating-crosses">
+            <div class="cross cross-1">✚</div>
+            <div class="cross cross-2">✚</div>
+            <div class="cross cross-3">✚</div>
+            <div class="cross cross-4">✚</div>
+            <div class="cross cross-5">✚</div>
+        </div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold text-white mb-4 animate-title">Garden of Faith Israel Pentecostal Church</h1>
+                    <h2 class="h3 text-white mb-4 animate-subtitle">Zambia</h2>
+                    <p class="lead text-white mb-4 animate-text">Welcome to our spiritual home where faith grows and souls are nourished</p>
+                    <div class="d-flex justify-content-center gap-3 animate-buttons">
+                        <a href="#services" class="btn btn-primary btn-lg pulse-btn">Join Us</a>
+                        <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+                    </div>
+                    <div class="mt-5">
+                        <div class="countdown-container">
+                            <h4 class="text-white mb-3">Next Service:</h4>
+                            <div id="service-countdown" class="countdown">
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="days">00</span>
+                                    <span class="countdown-label">Days</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="hours">00</span>
+                                    <span class="countdown-label">Hours</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="minutes">00</span>
+                                    <span class="countdown-label">Minutes</span>
+                                </div>
+                                <div class="countdown-item">
+                                    <span class="countdown-number" id="seconds">00</span>
+                                    <span class="countdown-label">Seconds</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yearly Theme Section -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="theme-content">
+                        <h2 class="section-title mb-3">2026 Theme</h2>
+                        <h3 class="theme-title mb-3">"BE STRONG; FEAR NOT!"</h3>
+                        <p class="theme-verse mb-3">
+                            <em>"Say to those who have an anxious heart, 'Be strong, fear not! Your God will come and save you.'"</em>
+                            <strong> - Isaiah 35:4</strong>
+                        </p>
+                        <p class="theme-description mb-3">
+                            This year, we are called to stand firm in faith, knowing that God is our strength and our salvation. In times of uncertainty, we find courage in His promises and power in His presence. Join us as we embrace bold faith and overcome fear through the strength that comes from above.
+                        </p>
+                        <div class="theme-highlights">
+                            <div class="highlight-item mb-2">
+                                <i class="fas fa-shield-alt text-primary me-3"></i>
+                                <span>Standing firm in God's promises</span>
+                            </div>
+                            <div class="highlight-item mb-2">
+                                <i class="fas fa-heart text-primary me-3"></i>
+                                <span>Overcoming fear through faith</span>
+                            </div>
+                            <div class="highlight-item mb-2">
+                                <i class="fas fa-dumbbell text-primary me-3"></i>
+                                <span>Finding strength in God's presence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="theme-image-container">
+                        <div class="theme-picture-slot">
+                            <img src="theme.jpeg" 
+                                 alt="2026 Yearly Theme - BE STRONG; FEAR NOT!" 
+                                 class="img-fluid rounded shadow theme-picture"
+                                 id="themeMainImage">
+                            <div class="picture-slot-overlay">
+                                <div class="slot-content">
+                                    <div class="theme-year">2026</div>
+                                    <div class="theme-tagline">Strength in Faith</div>
+                                    <div class="theme-badge">Annual Theme</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Gallery Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Our Community</h2>
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="worship">
+                        <img src="https://via.placeholder.com/300x200/0056b3/ffffff?text=Worship" alt="Worship Service">
+                        <div class="gallery-overlay">
+                            <h4>Worship Service</h4>
+                            <p>Join us in praise and worship</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="community">
+                        <img src="https://via.placeholder.com/300x200/007bff/ffffff?text=Community" alt="Community Fellowship">
+                        <div class="gallery-overlay">
+                            <h4>Community Fellowship</h4>
+                            <p>Building lasting relationships</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="youth">
+                        <img src="https://via.placeholder.com/300x200/0056b3/ffffff?text=Youth" alt="Youth Ministry">
+                        <div class="gallery-overlay">
+                            <h4>Youth Ministry</h4>
+                            <p>Empowering the next generation</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="outreach">
+                        <img src="https://via.placeholder.com/300x200/007bff/ffffff?text=Outreach" alt="Community Outreach">
+                        <div class="gallery-overlay">
+                            <h4>Community Outreach</h4>
+                            <p>Serving our local community</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-filters text-center mt-4">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="worship">Worship</button>
+                    <button class="filter-btn" data-filter="community">Community</button>
+                    <button class="filter-btn" data-filter="youth">Youth</button>
+                    <button class="filter-btn" data-filter="outreach">Outreach</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Our Services</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="service-card text-center p-4 interactive-card">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-church fa-3x text-primary"></i>
+                        </div>
+                        <h4>Sunday Service</h4>
+                        <p class="text-muted">8:00 AM - 11:00 AM</p>
+                        <p>Join us for powerful worship, inspiring preaching, and fellowship.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2 reminder-btn" data-service="sunday">Set Reminder</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-card text-center p-4 interactive-card">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-bible fa-3x text-primary"></i>
+                        </div>
+                        <h4>Bible Study</h4>
+                        <p class="text-muted">Wednesday 3:00 PM - 5:00 PM</p>
+                        <p>Deep dive into God's Word and grow in understanding.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2 reminder-btn" data-service="bible">Set Reminder</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-card text-center p-4 interactive-card">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-users fa-3x text-primary"></i>
+                        </div>
+                        <h4>Women's Fellowship</h4>
+                        <p class="text-muted">Thursday 9:00 AM - 12:00 PM</p>
+                        <p>A special time for women to connect, share, and grow together in faith.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2 reminder-btn" data-service="women">Set Reminder</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-card text-center p-4 interactive-card">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-graduation-cap fa-3x text-primary"></i>
+                        </div>
+                        <h4>Discipleship Class</h4>
+                        <p class="text-muted">Monday & Friday 6:00 PM - 8:00 PM</p>
+                        <p>Grow deeper in your faith through biblical teaching and practical application.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2 reminder-btn" data-service="discipleship">Set Reminder</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-card text-center p-4 interactive-card">
+                        <div class="service-icon mb-3">
+                            <img src="youth.jpeg" alt="Youth Fellowship" class="service-image">
+                        </div>
+                        <h4>Youth Fellowship</h4>
+                        <p class="text-muted">Saturday 3:00 PM - 5:00 PM</p>
+                        <p>Engaging activities and fellowship for the youth to grow in faith.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2 reminder-btn" data-service="youth">Set Reminder</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="service-card text-center p-4 interactive-card">
+                        <div class="service-icon mb-3">
+                            <i class="fas fa-music fa-3x text-primary"></i>
+                        </div>
+                        <h4>Praise Rehearsals</h4>
+                        <p class="text-muted">Saturday 5:00 PM - 6:00 PM</p>
+                        <p>Practice and preparation for worship ministry and praise team.</p>
+                        <button class="btn btn-sm btn-outline-primary mt-2 reminder-btn" data-service="praise">Set Reminder</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Services Button -->
+            <div class="text-center mt-5">
+                <a href="services.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-th-large me-2"></i>View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Youth Ministry Section -->
+    <section id="youth" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Youth Ministry</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="youth-content">
+                        <h3 class="h4 mb-3">Empowering the Next Generation</h3>
+                        <p class="mb-4">
+                            Our Youth Ministry is dedicated to nurturing young people in their faith journey, providing a safe and encouraging environment where they can grow spiritually, build meaningful friendships, and discover their God-given purpose.
+                        </p>
+                        <div class="youth-features">
+                            <div class="feature-item mb-3">
+                                <i class="fas fa-users text-primary me-3"></i>
+                                <span>Fellowship and Community Building</span>
+                            </div>
+                            <div class="feature-item mb-3">
+                                <i class="fas fa-bible text-primary me-3"></i>
+                                <span>Biblical Teaching and Discipleship</span>
+                            </div>
+                            <div class="feature-item mb-3">
+                                <i class="fas fa-music text-primary me-3"></i>
+                                <span>Worship and Creative Expression</span>
+                            </div>
+                            <div class="feature-item mb-3">
+                                <i class="fas fa-hands-helping text-primary me-3"></i>
+                                <span>Service and Outreach Opportunities</span>
+                            </div>
+                        </div>
+                        <div class="youth-schedule mt-4">
+                            <h5 class="mb-3">Meeting Times</h5>
+                            <p class="text-muted"><i class="fas fa-calendar me-2"></i>Saturdays: 3:00 PM - 5:00 PM</p>
+                            <p class="text-muted"><i class="fas fa-map-marker me-2"></i>Church Youth Hall</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="youth-image-container">
+                        <img src="youth.jpeg" alt="Youth Ministry" class="img-fluid rounded shadow youth-main-image">
+                        <div class="youth-image-overlay">
+                            <div class="overlay-content">
+                                <h4>Join Our Youth Family</h4>
+                                <p>Discover your purpose, grow in faith, and make lifelong friends</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">About Our Church</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-content">
+                        <h3 class="h4 mb-3">Our Mission</h3>
+                        <p>To glorify God by making disciples of all nations, baptizing them in the name of the Father, Son, and Holy Spirit, and teaching them to obey everything Jesus commanded.</p>
+                        
+                        <h3 class="h4 mb-3 mt-4">Our Vision</h3>
+                        <p>We envision a transformed Zambia where hope flourishes through Christ-centered initiatives. Our vision is to build orphanages to care for vulnerable children, establish schools that provide quality education with Christian values, create community centers that help the needy, launch radio stations to spread the gospel nationwide, and develop sustainable programs that empower communities spiritually, socially, and economically.</p>
+                        
+                        <h3 class="h4 mb-3 mt-4">Our Outreach Goals</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="vision-list">
+                                    <li><i class="fas fa-home text-primary me-2"></i>Build orphanages for vulnerable children</li>
+                                    <li><i class="fas fa-school text-primary me-2"></i>Establish Christian schools nationwide</li>
+                                    <li><i class="fas fa-hands-helping text-primary me-2"></i>Support the needy and vulnerable</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="vision-list">
+                                    <li><i class="fas fa-broadcast-tower text-primary me-2"></i>Launch gospel radio stations</li>
+                                    <li><i class="fas fa-heart text-primary me-2"></i>Community development programs</li>
+                                    <li><i class="fas fa-globe-africa text-primary me-2"></i>Nationwide evangelism outreach</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h3 class="h4 mb-3 mt-4">What We Believe</h3>
+                        <ul class="belief-list">
+                            <li>The Bible is the inspired Word of God</li>
+                            <li>One God eternally existing in three persons: Father, Son, and Holy Spirit</li>
+                            <li>Jesus Christ is the Son of God, born of a virgin, died for our sins, and rose again</li>
+                            <li>Salvation is by grace through faith in Jesus Christ</li>
+                            <li>The baptism of the Holy Spirit with evidence of speaking in tongues</li>
+                            <li>Divine healing, miracles, and the return of Jesus Christ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Get in Touch</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <h3 class="h4 mb-4">Contact Information</h3>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                            <span>123 Church Road, Lusaka, Zambia</span>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-phone text-primary me-3"></i>
+                            <span>+260 123 456 789</span>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-envelope text-primary me-3"></i>
+                            <span>info@gardenoffaith.org.zm</span>
+                        </div>
+                        <div class="contact-item mb-3">
+                            <i class="fas fa-clock text-primary me-3"></i>
+                            <span>Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-form">
+                        <h3 class="h4 mb-4">Send Us a Message</h3>
+                        <form id="messageForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="messageName" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="messageEmail" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" id="messagePhone" placeholder="Your Phone Number">
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-control" id="messageType">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="prayer">Prayer Request</option>
+                                    <option value="visit">Visit Request</option>
+                                    <option value="ministry">Ministry Information</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="messageContent" rows="4" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Wall Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Prayer Wall</h2>
+            <div class="prayer-wall">
+                <div class="prayer-form-container">
+                    <h3 class="h5 mb-3">Share Your Prayer Request</h3>
+                    <form id="prayer-form">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="prayer-name" placeholder="Your Name (Optional)" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="prayer-request" rows="3" placeholder="Your prayer request..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Prayer Request</button>
+                    </form>
+                </div>
+                <div class="prayer-list mt-4" id="prayer-list">
+                    <div class="text-center text-muted py-4">
+                        <i class="fas fa-pray fa-3x mb-3"></i>
+                        <p>No prayer requests yet</p>
+                        <small>Be the first to share a prayer request with our community</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Garden of Faith Israel Pentecostal Church of Zambia. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    <a href="login.html" class="text-white ms-3" title="Admin Access" style="opacity: 0.7; font-size: 0.8rem;">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="sync.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

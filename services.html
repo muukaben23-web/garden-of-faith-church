@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Services - Garden of Faith Israel Pentecostal Church of Zambia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        /* Services Page Specific Styles */
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            padding: 6rem 0 4rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .services-hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .services-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-detail-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-detail-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .service-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 86, 179, 0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+        
+        .service-time-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-title {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-feature i {
+            color: var(--primary-blue);
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+        
+        .service-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .service-category {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .filter-section {
+            background: var(--light-gray);
+            padding: 2rem 0;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-image-container {
+                height: 200px;
+            }
+            
+            .service-content {
+                padding: 1.5rem;
+            }
+            
+            .service-title {
+                font-size: 1.5rem;
+            }
+            
+            .filter-section {
+                position: relative;
+                top: 0;
+            }
+        }
+    /* Floating Pictures Styles */
+        .floating-pictures {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .floating-img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid var(--primary-blue);
+        }
+        
+        .floating-img:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .floating-img:nth-child(1) {
+            transform: rotate(-5deg);
+            z-index: 3;
+        }
+        
+        .floating-img:nth-child(2) {
+            transform: rotate(3deg);
+            z-index: 2;
+        }
+        
+        .floating-img:nth-child(3) {
+            transform: rotate(-3deg);
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(0deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .floating-img {
+                width: 150px;
+                height: 100px;
+            }
+            
+            .floating-pictures {
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-cross me-2"></i>
+                <span class="brand-text">Garden of Faith</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#youth">Youth Ministry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1 class="animate-title">All Church Services</h1>
+            <p class="animate-subtitle">Discover our comprehensive ministry programs designed to nourish your spirit and build community</p>
+            <div class="mt-4">
+                <a href="index.html" class="btn btn-light btn-lg">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Services</button>
+                <button class="filter-btn" data-filter="worship">Worship</button>
+                <button class="filter-btn" data-filter="teaching">Teaching</button>
+                <button class="filter-btn" data-filter="fellowship">Fellowship</button>
+                <button class="filter-btn" data-filter="youth">Youth</button>
+                <button class="filter-btn" data-filter="outreach">Outreach</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Details Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row" id="servicesContainer">
+                <!-- Sunday Service -->
+                <div class="col-lg-6 service-item" data-category="worship">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="youth.jpeg" alt="Sunday Service" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Sunday Service</h4>
+                            </div>
+                            <div class="service-time-badge">8:00 AM - 11:00 AM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Worship</span>
+                                <span class="service-category">Main Service</span>
+                            </div>
+                            <h3 class="service-title">Sunday Service</h3>
+                            <p class="service-description">
+                                Join us for our main weekly service where we gather as a church family for powerful worship, inspiring biblical preaching, and warm fellowship. Experience God's presence through praise, prayer, and practical teaching from God's Word.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-music"></i>
+                                    <span>Live worship music</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-microphone"></i>
+                                    <span>Inspirational preaching</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>Family-friendly atmosphere</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-child"></i>
+                                    <span>Children's ministry available</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bible Study -->
+                <div class="col-lg-6 service-item" data-category="teaching">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://via.placeholder.com/600x400/007bff/ffffff?text=Bible+Study" alt="Bible Study" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Bible Study</h4>
+                            </div>
+                            <div class="service-time-badge">Wednesday 3:00 PM - 5:00 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Teaching</span>
+                                <span class="service-category">Midweek</span>
+                            </div>
+                            <h3 class="service-title">Bible Study</h3>
+                            <p class="service-description">
+                                Deep dive into God's Word through interactive Bible study sessions. We explore Scripture in depth, discuss practical applications, and grow together in understanding and faith. Perfect for those wanting to strengthen their biblical knowledge.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-book"></i>
+                                    <span>In-depth Bible study</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-comments"></i>
+                                    <span>Group discussions</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Practical life applications</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-coffee"></i>
+                                    <span>Refreshments provided</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Women's Fellowship -->
+                <div class="col-lg-6 service-item" data-category="fellowship">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://via.placeholder.com/600x400/e91e63/ffffff?text=Women%27s+Fellowship" alt="Women's Fellowship" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Women's Fellowship</h4>
+                            </div>
+                            <div class="service-time-badge">Thursday 9:00 AM - 12:00 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Fellowship</span>
+                                <span class="service-category">Women</span>
+                            </div>
+                            <h3 class="service-title">Women's Fellowship</h3>
+                            <p class="service-description">
+                                A special time for women to connect, share, and grow together in faith. We create a supportive environment where women can build meaningful friendships, study God's Word, and encourage one another in their spiritual journey.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Supportive community</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-pray"></i>
+                                    <span>Prayer and sharing</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>Biblical teaching for women</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Monthly brunch gatherings</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discipleship Class -->
+                <div class="col-lg-6 service-item" data-category="teaching">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://via.placeholder.com/600x400/4caf50/ffffff?text=Discipleship+Class" alt="Discipleship Class" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Discipleship Class</h4>
+                            </div>
+                            <div class="service-time-badge">Monday & Friday 6:00 PM - 8:00 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Teaching</span>
+                                <span class="service-category">Discipleship</span>
+                            </div>
+                            <h3 class="service-title">Discipleship Class</h3>
+                            <p class="service-description">
+                                Grow deeper in your faith through comprehensive discipleship training. We cover foundational Christian doctrines, spiritual disciplines, and practical Christian living. Ideal for new believers and those wanting to strengthen their faith foundation.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Structured curriculum</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Certificate completion</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <span>One-on-one mentoring</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-tasks"></i>
+                                    <span>Practical assignments</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Youth Fellowship -->
+                <div class="col-lg-6 service-item" data-category="youth">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="youth.jpeg" alt="Youth Fellowship" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Youth Fellowship</h4>
+                            </div>
+                            <div class="service-time-badge">Saturday 3:00 PM - 5:00 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Youth</span>
+                                <span class="service-category">Fellowship</span>
+                            </div>
+                            <h3 class="service-title">Youth Fellowship</h3>
+                            <p class="service-description">
+                                Engaging activities and fellowship designed specifically for young people. We create a fun, safe environment where youth can grow in their faith, build lasting friendships, and discover their God-given purpose through relevant teaching and exciting activities.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-gamepad"></i>
+                                    <span>Fun activities and games</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-bible"></i>
+                                    <span>Age-appropriate teaching</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>Peer fellowship</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-star"></i>
+                                    <span>Leadership development</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Praise Rehearsals -->
+                <div class="col-lg-6 service-item" data-category="worship">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://via.placeholder.com/600x400/ff9800/ffffff?text=Praise+Rehearsals" alt="Praise Rehearsals" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Praise Rehearsals</h4>
+                            </div>
+                            <div class="service-time-badge">Saturday 5:00 PM - 6:00 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Worship</span>
+                                <span class="service-category">Music</span>
+                            </div>
+                            <h3 class="service-title">Praise Rehearsals</h3>
+                            <p class="service-description">
+                                Join our praise team as we prepare for worship services through practice and fellowship. Whether you sing, play an instrument, or want to learn, we welcome you to be part of our music ministry that leads the congregation into God's presence.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-microphone-alt"></i>
+                                    <span>Vocal training</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-guitar"></i>
+                                    <span>Instrument practice</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-music"></i>
+                                    <span>Song selection</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-smile"></i>
+                                    <span>Team fellowship</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prayer Meeting -->
+                <div class="col-lg-6 service-item" data-category="fellowship">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://via.placeholder.com/600x400/9c27b0/ffffff?text=Prayer+Meeting" alt="Prayer Meeting" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Prayer Meeting</h4>
+                            </div>
+                            <div class="service-time-badge">Tuesday 6:00 PM - 7:30 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Fellowship</span>
+                                <span class="service-category">Prayer</span>
+                            </div>
+                            <h3 class="service-title">Prayer Meeting</h3>
+                            <p class="service-description">
+                                Come together for a powerful time of corporate prayer. We lift up our church, community, nation, and personal needs before God. Experience the power of unified prayer and see God move in miraculous ways as we seek His face together.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-praying-hands"></i>
+                                    <span>Corporate prayer</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-hands-helping"></i>
+                                    <span>Prayer for needs</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-dove"></i>
+                                    <span>Waiting on God</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-church"></i>
+                                    <span>Church intercession</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Outreach -->
+                <div class="col-lg-6 service-item" data-category="outreach">
+                    <div class="service-detail-card">
+                        <div class="service-image-container">
+                            <img src="https://via.placeholder.com/600x400/ff5722/ffffff?text=Community+Outreach" alt="Community Outreach" class="service-image">
+                            <div class="service-image-overlay">
+                                <h4 class="text-white">Community Outreach</h4>
+                            </div>
+                            <div class="service-time-badge">Friday 4:00 PM - 6:00 PM</div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-categories">
+                                <span class="service-category">Outreach</span>
+                                <span class="service-category">Service</span>
+                            </div>
+                            <h3 class="service-title">Community Outreach</h3>
+                            <p class="service-description">
+                                Put your faith into action through our community outreach programs. We serve the needy, visit the sick, care for orphans, and share the love of Christ with our local community. Be the hands and feet of Jesus in practical ways.
+                            </p>
+                            <div class="service-features">
+                                <div class="service-feature">
+                                    <i class="fas fa-home"></i>
+                                    <span>Home visitations</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Feeding programs</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-child"></i>
+                                    <span>Orphan care</span>
+                                </div>
+                                <div class="service-feature">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <span>Evangelism</span>
+                                </div>
+                            </div>
+                            <div class="service-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-calendar-plus me-2"></i>Set Reminder
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-info-circle me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Pictures Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Service Gallery</h2>
+            <div class="row">
+                <!-- Worship Service Floating Pictures -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-detail-card">
+                        <h3 class="service-title">Worship Service</h3>
+                        <div class="floating-pictures">
+                            <img src="https://via.placeholder.com/200x150/0056b3/ffffff?text=Worship+1" alt="Worship Moment 1" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/007bff/ffffff?text=Worship+2" alt="Worship Moment 2" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Worship+3" alt="Worship Moment 3" class="floating-img">
+                        </div>
+                        <p class="text-muted">Click to view full worship gallery</p>
+                    </div>
+                </div>
+
+                <!-- Community Fellowship Floating Pictures -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-detail-card">
+                        <h3 class="service-title">Community Fellowship</h3>
+                        <div class="floating-pictures">
+                            <img src="https://via.placeholder.com/200x150/e91e63/ffffff?text=Fellowship+1" alt="Fellowship Moment 1" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Fellowship+2" alt="Fellowship Moment 2" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/ffc107/ffffff?text=Fellowship+3" alt="Fellowship Moment 3" class="floating-img">
+                        </div>
+                        <p class="text-muted">Building lasting relationships</p>
+                    </div>
+                </div>
+
+                <!-- Youth Ministry Floating Pictures -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-detail-card">
+                        <h3 class="service-title">Youth Ministry</h3>
+                        <div class="floating-pictures">
+                            <img src="https://via.placeholder.com/200x150/ff9800/ffffff?text=Youth+1" alt="Youth Activity 1" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/ff5722/ffffff?text=Youth+2" alt="Youth Activity 2" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/ffc107/ffffff?text=Youth+3" alt="Youth Activity 3" class="floating-img">
+                        </div>
+                        <p class="text-muted">Empowering the next generation</p>
+                    </div>
+                </div>
+
+                <!-- Community Outreach Floating Pictures -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-detail-card">
+                        <h3 class="service-title">Community Outreach</h3>
+                        <div class="floating-pictures">
+                            <img src="https://via.placeholder.com/200x150/ff5722/ffffff?text=Outreach+1" alt="Outreach Activity 1" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/28a745/ffffff?text=Outreach+2" alt="Outreach Activity 2" class="floating-img">
+                            <img src="https://via.placeholder.com/200x150/17a2b8/ffffff?text=Outreach+3" alt="Outreach Activity 3" class="floating-img">
+                        </div>
+                        <p class="text-muted">Serving our local community</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Garden of Faith Israel Pentecostal Church of Zambia. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+                    <a href="admin.html" class="text-white ms-3" title="Admin Access" style="opacity: 0.7; font-size: 0.8rem;">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceItems = document.querySelectorAll('.service-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    serviceItems.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            const categories = item.getAttribute('data-category').split(' ');
+                            if (categories.includes(filter)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Ensure Back to Home button works
+            const backToHomeBtn = document.querySelector('a[href="index.html"]');
+            if (backToHomeBtn) {
+                backToHomeBtn.addEventListener('click', function(e) {
+                    console.log('Back to Home button clicked');
+                    // Let the default href behavior work
+                });
+            }
+        });
+    </script>
+</body>
+</html>
